@@ -11,17 +11,23 @@ Uso:
     streamlit run app/main.py
 """
 
+import os
+import sys
+
+# Ensure the app directory is in sys.path for Streamlit Cloud
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from typing import Dict, List
 
 import streamlit as st
 
-from app.components.diagnostics import render_diagnostics
-from app.components.results_table import render_results
-from app.components.sidebar import render_sidebar
-from app.core.data_loader import load_data
-from app.core.forecaster import forecast_volatility
-from app.core.models import EGARCHModel, GARCHModel, GJRGARCHModel
-from app.core.returns import (
+from components.diagnostics import render_diagnostics
+from components.results_table import render_results
+from components.sidebar import render_sidebar
+from core.data_loader import load_data
+from core.forecaster import forecast_volatility
+from core.models import EGARCHModel, GARCHModel, GJRGARCHModel
+from core.returns import (
     compute_log_returns,
     compute_realized_volatility,
 )
